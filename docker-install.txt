@@ -1,0 +1,38 @@
+
+1.    Docker Uninstall
+
+          sudo yum remove docker \
+
+                  docker-client \
+
+                  docker-client-latest \
+
+                  docker-common \
+
+                  docker-latest \
+
+                  docker-latest-logrotate \
+
+                  docker-logrotate \
+
+                  docker-selinux \
+
+                  docker-engine-selinux \
+
+                  docker-engine
+
+2.    Re-install
+3.    Check Version if it is latest (from the git repo or yum direct)
+4.    Create or keep the repo in nexus (the docker-compose.yml is fine)
+5.    Check docker login to nexus for port of the REPO (so NOT 8081 or 8083, I think the repo is on 8123)
+6.    If it times out check /etc/docker/
+
+        Check for a key.json or Daemon.json
+        If daemon doesn’t recreate
+        ***DO NOT *** leave spaces or breaks or commas in the JSON as for some reason it picks it up as invalid
+        Add the Insecure-repositories tag with the URL to the REPO [“IPADDR:8123”]
+
+7.    Run >    sudo systemctl stop docker (optional)
+8.    Run >    sudo systemctl daemon-reload
+9.    Run >    sudo sustemctl restart docker
+10.   Re-try step 5

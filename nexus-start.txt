@@ -1,0 +1,17 @@
+-- this is the docker-file to start nexus
+- few things to consider:
+check for any proxies
+-- if there are proxies then you will need to add a line in the script
+   to set them off or set the ENV to proxy IP given its outgoing
+-- if the server is on an isolated subnet you will need to add the
+   any ack parties to the ip-routing to allow for communication to
+   both host server and container itself
+
+-- Docker-compose.yml for nexus
+nexus:
+     image: sonatype/nexus3:latest
+     ports:
+         -"8081:8081"
+         -"8123:8123"
+     volumes:
+         -./data:/nexus-data
