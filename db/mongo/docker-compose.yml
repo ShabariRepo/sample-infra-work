@@ -1,4 +1,4 @@
-version: '2'
+version: '3.7'
 
 networks:
   mongodb_net:
@@ -18,6 +18,12 @@ services:
         - mongodb_net
       ports:
         - 27017:27017
+      deploy:
+              restart_policy:
+                condition: unless-stopped
+                delay: 5s
+                max_attempts: 3
+                window: 120s
     mongoclient:
       image: mongoclient/mongoclient:latest
       container_name: mongoclient
@@ -28,3 +34,9 @@ services:
         - mongodb_net
       ports:
         - 3300:3000
+      deploy:
+              restart_policy:
+                condition: unless-stopped
+                delay: 5s
+                max_attempts: 3
+                window: 120s
