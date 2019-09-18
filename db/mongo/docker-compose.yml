@@ -6,7 +6,7 @@ networks:
     ipam:
       driver: default
       config:
-      # Change this subnet range if it conflicts with your personal/work network
+      # Change this subnet range if it conflicts with your host network
         - subnet: 192.168.213.0/24
           gateway: 192.168.213.1
 services:
