@@ -19,22 +19,12 @@ services:
       ports:
         - 27017:27017
       restart: unless-stopped
-    mongodbtest:
-      image: mongo:latest
-      container_name: mongodb_test
-      hostname: mongodb
-      networks:
-        - mongodb_net
-      ports:
-        - 27018:27017
-      restart: unless-stopped
     mongoclient:
       image: mongoclient/mongoclient:latest
       container_name: mongoclient
       hostname: mongoclient
       depends_on:
         - mongodb
-        - mongodbtest
       networks:
         - mongodb_net
       ports:
