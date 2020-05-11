@@ -1,0 +1,9 @@
+version: '3'
+services: 
+  elasticDoc:
+   image: elasticsearch:7.4.2 #elasticsearch:6.8.4 #elasticsearch:2.3 #elasticsearch:7.4.2
+   restart: always
+   expose:
+    - "9200"
+   ports:
+    - "9200:9200"
